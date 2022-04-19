@@ -1,9 +1,13 @@
 const express = require('express');
+const path = require('path');
 
 const friendsRouter = require('./routes/friends.router');
 const messagesRouter = require('./routes/messages.router');
 
 const app = express();
+
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));
 
 const PORT = 3000;
 
@@ -14,10 +18,14 @@ app.use((req, res, next) => {
     console.log(`${req.method} ${req.baseUrl}${req.url} ${delta}ms`);
 });
 
+app.use('/site', express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    res.send('Hello, world!');
+    res.render('index', {
+        title: 'Cute Cat',
+        caption: 'Mew Mew!'
+    });
 });
 
 app.use('/friends', friendsRouter);
