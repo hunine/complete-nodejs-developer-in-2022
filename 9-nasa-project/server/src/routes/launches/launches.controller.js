@@ -4,14 +4,14 @@ function httpGetAllLaunches(req, res) {
     return res.status(200).json(getAllLaunches());
 }
 
-function httpAddNewLaunches(req, res) {
+function httpAddNewLaunch(req, res) {
     const launch = req.body;
 
     if (
         !launch.mission ||
         !launch.rocket ||
         !launch.launchDate ||
-        !launch.destination
+        !launch.target
     ) {
         return res.status(400).json({
             error: 'Missing required launch property',
@@ -22,7 +22,7 @@ function httpAddNewLaunches(req, res) {
     if (isNaN(launch.launchDate)) {
         return res.status(400).json({
             error: 'Invalid launch date',
-        })
+        });
     }
 
     addNewLaunch(launch);
@@ -31,5 +31,5 @@ function httpAddNewLaunches(req, res) {
 
 module.exports = {
     httpGetAllLaunches,
-    httpAddNewLaunches,
+    httpAddNewLaunch,
 };
