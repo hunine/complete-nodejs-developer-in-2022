@@ -1,27 +1,10 @@
 {
   "files": {
-<<<<<<< HEAD
-<<<<<<< HEAD
     "main.js": "/static/js/main.e38ee8c2.js",
     "index.html": "/index.html",
     "main.e38ee8c2.js.map": "/static/js/main.e38ee8c2.js.map"
   },
   "entrypoints": [
     "static/js/main.e38ee8c2.js"
-=======
-    "main.js": "/static/js/main.d998dac1.js",
-=======
-    "main.js": "/static/js/main.e38ee8c2.js",
->>>>>>> 193bf41 (Delete Launch)
-    "index.html": "/index.html",
-    "main.e38ee8c2.js.map": "/static/js/main.e38ee8c2.js.map"
-  },
-  "entrypoints": [
-<<<<<<< HEAD
-    "static/js/main.d998dac1.js"
->>>>>>> 34e3215 (Fix bug POST /launches)
-=======
-    "static/js/main.e38ee8c2.js"
->>>>>>> 193bf41 (Delete Launch)
   ]
 }
