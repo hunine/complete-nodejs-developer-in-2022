@@ -11,6 +11,16 @@ require('dotenv').config();
 
 const PORT = 3000;
 
+// Save the session to the cookie
+passport.serializeUser((user, done) => {
+    done(null, user.id);
+});
+
+// Read the session from the cookie
+passport.deserializeUser((id, done) => {
+    done(null, id);
+});
+
 const config = {
     CLIENT_ID: process.env.CLIENT_ID,
     CLIENT_SECRET: process.env.CLIENT_SECRET,
@@ -44,6 +54,7 @@ app.use(
 );
 
 app.use(passport.initialize());
+app.use(passport.session());
 
 function checkLoggedIn(req, res, next) {
     const isLoggedIn = true; // TODO
@@ -68,7 +79,7 @@ app.get(
     passport.authenticate('google', {
         failureRedirect: '/failure',
         successRedirect: '/',
-        session: false,
+        session: true,
     }),
     (req, res) => {
         console.log('Google called us back!');
