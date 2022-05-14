@@ -57,7 +57,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 function checkLoggedIn(req, res, next) {
-    const isLoggedIn = true; // TODO
+    console.log('Current user is: ', req.user);
+    const isLoggedIn = req.user;
 
     if (!isLoggedIn) {
         return res.status(401).json({
@@ -86,7 +87,10 @@ app.get(
     }
 );
 
-app.get('/auth/logout', (req, res) => {});
+app.get('/auth/logout', (req, res) => {
+    req.logout(); // Removes req.user and clears any logged in session
+    return res.redirect('/');
+});
 
 app.get('/secret', checkLoggedIn, (req, res) => {
     res.send('This is secret');
